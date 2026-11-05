@@ -96,7 +96,7 @@ def south_cap(out, color_rgb):
     band = color_rgb[int((90+72)/180*rows):int((90+80)/180*rows)].reshape(-1, 3)/255.0
     linear = np.where(band <= .04045, band/12.92, ((band + .055)/1.055)**2.4).mean(axis=0)
     return {'file': 'moon-south-normal.jpg', 'size': [4096, 4096], 'edgeLatitudeDeg': edge_lat,
-            'rhoMaxRadii': rho_max/(RADIUS_KM*1000), 'cellM': cell, 'albedoLinear': [round(float(v), 5) for v in linear],
+            'rhoMaxRadii': rho_max/(RADIUS_KM*1000), 'cellM': pixel, 'albedoLinear': [round(float(v), 5) for v in linear],
             'content': 'east, north, up normal components from LDEM_60S_240MPP_ADJ at its native 240 m spacing; display only',
             'source': 'https://pgda.gsfc.nasa.gov/products/90'}
 

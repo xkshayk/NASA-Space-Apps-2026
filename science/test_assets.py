@@ -19,11 +19,9 @@ def test_mesh_cells_and_residual_preserve_relief_without_double_counting():
 def test_equirectangular_normals_tilt_away_from_rising_ground():
     pixel_deg = 1/16
     rows, cols = 2880, 5760
-    lon = (np.arange(cols) + .5)*pixel_deg
-    east_slope = .1  # km per km near the equator
+    east_slope = .1  # km per km at the equator
     spacing = math.radians(pixel_deg)*1737.4
-    heights = np.tile(east_slope*spacing*np.arange(cols)/1, (8, 1))
-    heights = np.vstack([heights]*(rows//8))
+    heights = np.tile(east_slope*spacing*np.arange(cols), (rows, 1))
     normal = tangent_normals(heights, pixel_deg)
     equator = normal[rows//2, 100:-100]
     assert np.allclose(equator[:, 0], -east_slope/math.sqrt(1 + east_slope**2), atol=1e-3)
