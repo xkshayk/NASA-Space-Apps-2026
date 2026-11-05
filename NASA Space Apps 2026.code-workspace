@@ -1,0 +1,4 @@
+{
+  "folders": [{ "path": "." }],
+  "settings": { "files.exclude": { "**/.git": true }, "search.exclude": { "data/raw": true, "data/kernels": true, "dist": true } }
+}

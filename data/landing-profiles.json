@@ -1,0 +1,26 @@
+{
+  "profiles": [
+    {
+      "id": "study",
+      "name": "Custom robotic study",
+      "maxSlopeDeg": 10,
+      "maxRoughnessM": 1,
+      "sunAltitudeRangeDeg": null,
+      "maxAbsLatitudeDeg": 90,
+      "maxAbsLongitudeDeg": 180,
+      "note": "Editable study assumptions, not a manufacturer specification or NASA approval. Roughness is a 100 m baseline statistic, not boulder height.",
+      "source": "https://www.nasa.gov/centers-and-facilities/johnson/nasa-technology-enables-precision-landing-without-a-pilot/"
+    },
+    {
+      "id": "apollo-early",
+      "name": "Early Apollo site-selection example",
+      "maxSlopeDeg": 2,
+      "maxRoughnessM": null,
+      "sunAltitudeRangeDeg": [7, 20],
+      "maxAbsLatitudeDeg": 5,
+      "maxAbsLongitudeDeg": 45,
+      "note": "Historical NASA example: general slope below 2 degrees, equatorial near-side zone, and approach illumination 7–20 degrees. Sun-behind-lander geometry, approach radar, propellant, free return and launch constraints are unassessed. Not a current CLPS vehicle profile.",
+      "source": "https://www.nasa.gov/history/50-years-ago-lunar-landing-sites-selected/"
+    }
+  ]
+}

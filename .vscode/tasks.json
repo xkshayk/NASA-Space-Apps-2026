@@ -1,0 +1,8 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    { "label": "Preview", "type": "process", "command": "node", "args": ["scripts/dev.mjs"], "windows": { "command": "powershell.exe", "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/dev.ps1"] }, "options": { "cwd": "${workspaceFolder}" }, "problemMatcher": [] },
+    { "label": "Check", "type": "process", "command": "node", "args": ["scripts/check.mjs"], "windows": { "command": "powershell.exe", "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/dev.ps1", "-Check"] }, "options": { "cwd": "${workspaceFolder}" }, "problemMatcher": [] },
+    { "label": "Build", "type": "process", "command": "node", "args": ["scripts/build.mjs"], "windows": { "command": "powershell.exe", "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/dev.ps1", "-Build"] }, "options": { "cwd": "${workspaceFolder}" }, "group": "build", "problemMatcher": [] }
+  ]
+}

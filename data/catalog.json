@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 2,
+  "reviewedOn": "2026-09-24",
+  "coordinateConvention": "Planetocentric latitude; east-positive longitude; interpreted in MOON_ME_DE440_ME421. Published rounded coordinates are not survey-grade.",
+  "sites": [
+    {"id":"im1","name":"Odysseus · IM-1","region":"Malapert A","latitude":-80.13,"longitude":1.44,"elevationKm":2.579,"status":"Confirmed landing","mission":"CLPS · Intuitive Machines","landed":"2024-02-22","coordinatePrecision":"0.01° in NASA article","note":"NASA reports a 12° local slope. A past touchdown does not certify a site for another lander.","source":"https://www.nasa.gov/missions/lro/nasas-lro-images-intuitive-machines-odysseus-lander/","reportedSlopeDeg":12},
+    {"id":"im2","name":"Athena · IM-2","region":"Mons Mouton","latitude":-84.7906,"longitude":29.1957,"elevationKm":null,"status":"Confirmed landing","mission":"CLPS · Intuitive Machines","landed":"2025-03-06","coordinatePrecision":"0.0001° published; physical uncertainty not supplied","note":"LRO located Athena inside a 20 m crater after it landed on its side. This terrain is unresolved in the regional DEM.","source":"https://lroc.im-ldi.com/images/1408"},
+    {"id":"blue-ghost","name":"Blue Ghost · Mission 1","region":"Mare Crisium","latitude":18.5623,"longitude":61.8103,"elevationKm":-3.650,"status":"Confirmed landing","mission":"CLPS · Firefly Aerospace","landed":"2025-03-02","coordinatePrecision":"0.0001° published; physical uncertainty not supplied","note":"LROC imagery places the lander on a small crater rim. Compare its low-latitude daylight cycle with the southern sites.","source":"https://lroc.im-ldi.com/images/1407","confirmationSource":"https://www.nasa.gov/image-article/nasas-lunar-reconnaissance-orbiter-views-blue-ghost-on-moons-surface/"},
+    {"id":"apollo11","name":"Apollo 11 · Tranquility","region":"Mare Tranquillitatis","latitude":0.67416,"longitude":23.47314,"elevationKm":null,"status":"Confirmed landing","mission":"NASA · historical comparison","landed":"1969-07-20","coordinatePrecision":"LRO-derived ME/PA DE421 coordinates; printed digits are not a survey error bound","note":"NASA NSSDCA lunar-module location. Historical hardware is not assumed operational at the selected date.","source":"https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html"},
+    {"id":"apollo12","name":"Apollo 12 · Intrepid","region":"Oceanus Procellarum","latitude":-3.0128,"longitude":-23.4219,"elevationKm":null,"status":"Confirmed landing","mission":"NASA · historical comparison","landed":"1969-11-19","coordinatePrecision":"LRO-derived ME/PA DE421; 4 decimal places published","note":"An equatorial western-longitude comparison, using NASA's lunar-module coordinate table.","source":"https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html"},
+    {"id":"apollo17","name":"Apollo 17 · Challenger","region":"Taurus–Littrow","latitude":20.1911,"longitude":30.7723,"elevationKm":null,"status":"Confirmed landing","mission":"NASA · historical comparison","landed":"1972-12-11","coordinatePrecision":"LRO-derived ME/PA DE421; 4 decimal places published","note":"A valley location for terrain comparisons; the global DEM does not resolve every local hazard.","source":"https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html"}
+  ],
+  "stations":[
+    {"id":"DSS-14","naifId":399014,"name":"Goldstone · DSS-14","country":"California, USA","diameterM":70},
+    {"id":"DSS-43","naifId":399043,"name":"Canberra · DSS-43","country":"Australia","diameterM":70},
+    {"id":"DSS-63","naifId":399063,"name":"Madrid · DSS-63","country":"Spain","diameterM":70},
+    {"id":"DSS-24","naifId":399024,"name":"Goldstone · DSS-24","country":"California, USA","diameterM":34,"source":"https://pds.nasa.gov/ds-view/pds/viewContext.jsp?identifier=urn%3Anasa%3Apds%3Acontext%3Atelescope%3Agoldstone.dss24_34m"},
+    {"id":"DSS-34","naifId":399034,"name":"Canberra · DSS-34","country":"Australia","diameterM":34,"source":"https://www.cdscc.nasa.gov/Pages/Antennas/dss34.html"},
+    {"id":"DSS-54","naifId":399054,"name":"Madrid · DSS-54","country":"Spain","diameterM":34,"source":"https://www.mdscc.nasa.gov/index.php/en/dss-54-2/"}
+  ],
+  "stationSource":"https://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/stations/earthstns_itrf93_260814.bsp",
+  "landingCriteriaSource":"https://www.nasa.gov/history/50-years-ago-lunar-landing-sites-selected/",
+  "hazardSource":"https://www.nasa.gov/centers-and-facilities/johnson/nasa-technology-enables-precision-landing-without-a-pilot/"
+}

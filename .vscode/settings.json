@@ -1,0 +1,7 @@
+{
+  "editor.tabSize": 2,
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "javascript.suggest.autoImports": true,
+  "debug.javascript.autoAttachFilter": "disabled"
+}

@@ -1,0 +1,6 @@
+# Direct dependencies. Setup uses the tested exact requirements.lock.
+spiceypy>=8,<9
+numpy>=2,<3
+pytest>=8,<10
+rasterio>=1.5,<2
+pillow>=12,<13

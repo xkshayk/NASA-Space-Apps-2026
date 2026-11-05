@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "inputs": [
+    {
+      "path": "data/kernels/naif0012.tls",
+      "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/lsk/naif0012.tls",
+      "credit": "NAIF leap seconds",
+      "bytes": 5257,
+      "sha256": "678e32bdb5a744117a467cd9601cd6b373f0e9bc9bbde1371d5eee39600a039b",
+      "retrievedUtc": "2026-09-17T20:36:55.516289+00:00"
+    },
+    {
+      "path": "data/kernels/pck00011.tpc",
+      "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/pck00011.tpc",
+      "credit": "NAIF body radii",
+      "bytes": 131226,
+      "sha256": "3dff7b1dbeceaa01f25467767d3fa25816051c85d162d1edf04acb310ee28bb1",
+      "retrievedUtc": "2026-09-17T20:36:55.762138+00:00"
+    },
+    {
+      "path": "data/kernels/de440s.bsp",
+      "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/planets/de440s.bsp",
+      "credit": "JPL DE440 short planetary ephemerides",
+      "bytes": 32726016,
+      "sha256": "c1c7feeab882263fc493a9d5a5b2ddd71b54826cdf65d8d17a76126b260a49f2",
+      "retrievedUtc": "2026-09-17T20:36:57.144865+00:00"
+    },
+    {
+      "path": "data/kernels/moon_pa_de440_200625.bpc",
+      "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/moon_pa_de440_200625.bpc",
+      "credit": "DE440 lunar orientation",
+      "bytes": 12863488,
+      "sha256": "60cd55aa401ea2ea97360636f567554bfe4e37bb829f901b4460a455dfaf783f",
+      "retrievedUtc": "2026-09-17T20:36:57.107374+00:00"
+    },
+    {
+      "path": "data/kernels/moon_de440_250416.tf",
+      "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/fk/satellites/moon_de440_250416.tf",
+      "credit": "DE440 lunar frame definitions",
+      "bytes": 19478,
+      "sha256": "a47c71e9c9f33796bdafb2c9d69a7ee447b6016ecad80f71cd6f3e479f9cf768",
+      "retrievedUtc": "2026-09-17T20:36:56.221087+00:00"
+    },
+    {
+      "path": "data/kernels/earth_000101_261213_260916.bpc",
+      "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/earth_000101_261213_260916.bpc",
+      "credit": "Earth ITRF93 orientation; predictions after 2026-09-16",
+      "bytes": 5133312,
+      "sha256": "e8a95af748de20f0b9c9b04da39b92a44f4f6606712b836837c6b6c12c615b82",
+      "retrievedUtc": "2026-09-17T20:36:57.408209+00:00"
+    },
+    {
+      "path": "data/kernels/earthstns_itrf93_260814.bsp",
+      "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/spk/stations/earthstns_itrf93_260814.bsp",
+      "credit": "DSN station positions in ITRF93",
+      "bytes": 26624,
+      "sha256": "007eb0aad5dd022c6d61bdbfb2395680bd1eb31c49a8637d0b0a1cfbea737c6b",
+      "retrievedUtc": "2026-09-17T20:36:57.563032+00:00"
+    },
+    {
+      "path": "data/raw/moon-color.tif",
+      "url": "https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004720/lroc_color_16bit_srgb_4k.tif",
+      "credit": "NASA/GSFC/ASU LROC aesthetic surface mosaic, not science pixels",
+      "bytes": 61891324,
+      "sha256": "9731fa8af425b6c2f88f277ecca82bf8c603f3743894f64ed7b25c5bfefa22ff",
+      "retrievedUtc": "2026-09-17T20:36:59.893195+00:00"
+    },
+    {
+      "path": "data/raw/moon-dem.tif",
+      "url": "https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004720/ldem_16.tif",
+      "credit": "NASA/GSFC LOLA global 16 pixels/degree elevation",
+      "bytes": 66378634,
+      "sha256": "1ea42bf44f7e9d694f79c3afa7145f97fbf06cc67372067d9fe73dce43bad796",
+      "retrievedUtc": "2026-09-17T20:36:59.636415+00:00"
+    },
+    {
+      "path": "data/raw/earth.png",
+      "url": "https://svs.gsfc.nasa.gov/vis/a000000/a002900/a002915/bluemarble-2048.png",
+      "credit": "NASA/GSFC Blue Marble static mosaic; not live weather",
+      "bytes": 1511379,
+      "sha256": "ae6214b078ed0864c96f74bcb10ae3021f6eb116f8059797efe0fa9ea8b89d35",
+      "retrievedUtc": "2026-09-17T20:36:58.016132+00:00"
+    },
+    {
+      "path": "data/raw/south-dem.tif",
+      "url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_60S_240MPP_ADJ.TIF",
+      "credit": "NASA GSFC adjusted LOLA south polar DEM, 240 m/pixel",
+      "bytes": 218961039,
+      "sha256": "3f9663257b63022f2b0d5a623482ff3cadddceb91594a4e4ca14a94d8cec8b34",
+      "retrievedUtc": "2026-09-17T20:38:00.460423+00:00"
+    }
+  ]
+}

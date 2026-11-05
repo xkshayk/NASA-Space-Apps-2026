@@ -1,0 +1,276 @@
+{
+  "schemaVersion": 1,
+  "source": "https://pgda.gsfc.nasa.gov/products/90",
+  "inputs": [
+    {
+      "path": "data/raw/regions/im1-elevation.tif",
+      "region": "im1",
+      "kind": "elevation",
+      "url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF",
+      "unit": "m",
+      "pixelM": 20.0,
+      "sourceWindow": [
+        14376,
+        0,
+        2400,
+        2400
+      ],
+      "transform": [
+        20.0,
+        0.0,
+        -16480.0,
+        0.0,
+        -20.0,
+        304000.0
+      ],
+      "frame": "MOON_ME / DE421",
+      "credit": "NASA/GSFC LOLA; Barker et al. 2023, doi:10.3847/PSJ/acf3e1",
+      "retrievedUtc": "2026-09-24T06:43:21.655182+00:00",
+      "sha256": "458c1e4e29478d43e51988a9bd4c900bd349f7ddf0f783fca6d9931b34bacb05",
+      "bytes": 18750135
+    },
+    {
+      "path": "data/raw/regions/im1-slope.tif",
+      "region": "im1",
+      "kind": "slope",
+      "url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDSM_80S_20MPP_ADJ.TIF",
+      "unit": "degrees",
+      "pixelM": 20.0,
+      "sourceWindow": [
+        14376,
+        0,
+        2400,
+        2400
+      ],
+      "transform": [
+        20.0,
+        0.0,
+        -16480.0,
+        0.0,
+        -20.0,
+        304000.0
+      ],
+      "frame": "MOON_ME / DE421",
+      "credit": "NASA/GSFC LOLA; Barker et al. 2023, doi:10.3847/PSJ/acf3e1",
+      "retrievedUtc": "2026-09-24T06:43:44.754842+00:00",
+      "sha256": "838b0becde8ded79caf2b2fb238bd0ca36e66db37e08bcd8988c634d2fd4ff19",
+      "bytes": 20259547
+    },
+    {
+      "path": "data/raw/regions/im1-elevationError.tif",
+      "region": "im1",
+      "kind": "elevationError",
+      "url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ_ERR.TIF",
+      "unit": "m",
+      "pixelM": 20.0,
+      "sourceWindow": [
+        14376,
+        0,
+        2400,
+        2400
+      ],
+      "transform": [
+        20.0,
+        0.0,
+        -16480.0,
+        0.0,
+        -20.0,
+        304000.0
+      ],
+      "frame": "MOON_ME / DE421",
+      "credit": "NASA/GSFC LOLA; Barker et al. 2023, doi:10.3847/PSJ/acf3e1",
+      "retrievedUtc": "2026-09-24T06:44:07.076257+00:00",
+      "sha256": "ac271d82a375a4eed11e990264c2f33b8cda0ed3b86051bf66c12887efa0a99f",
+      "bytes": 20429999
+    },
+    {
+      "path": "data/raw/regions/im1-effectiveResolution.tif",
+      "region": "im1",
+      "kind": "effectiveResolution",
+      "url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ_EFFRES.TIF",
+      "unit": "m",
+      "pixelM": 20.0,
+      "sourceWindow": [
+        14376,
+        0,
+        2400,
+        2400
+      ],
+      "transform": [
+        20.0,
+        0.0,
+        -16480.0,
+        0.0,
+        -20.0,
+        304000.0
+      ],
+      "frame": "MOON_ME / DE421",
+      "credit": "NASA/GSFC LOLA; Barker et al. 2023, doi:10.3847/PSJ/acf3e1",
+      "retrievedUtc": "2026-09-24T06:44:29.309252+00:00",
+      "sha256": "22fc4815691c799d613e0699217fc9d85576912b9489a51ce3745e076fc12a75",
+      "bytes": 20528383
+    },
+    {
+      "path": "data/raw/regions/im1-roughness100m.tif",
+      "region": "im1",
+      "kind": "roughness100m",
+      "url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDRM_80S_50MPP_ADJ_ROUGH_100M.TIF",
+      "unit": "m; 100 m baseline",
+      "pixelM": 50.0,
+      "sourceWindow": [
+        5750,
+        0,
+        960,
+        960
+      ],
+      "transform": [
+        50.0,
+        0.0,
+        -16500.0,
+        0.0,
+        -50.0,
+        304000.0
+      ],
+      "frame": "MOON_ME / DE421",
+      "credit": "NASA/GSFC LOLA; Barker et al. 2023, doi:10.3847/PSJ/acf3e1",
+      "retrievedUtc": "2026-09-24T06:44:37.454295+00:00",
+      "sha256": "78a1389f26f312a7d61177bfe3891b09774ded48440caebe66b296e38f9dbf6d",
+      "bytes": 3273047
+    },
+    {
+      "path": "data/raw/regions/im2-elevation.tif",
+      "region": "im2",
+      "kind": "elevation",
+      "url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ.TIF",
+      "unit": "m",
+      "pixelM": 20.0,
+      "sourceWindow": [
+        17855,
+        7100,
+        2400,
+        2400
+      ],
+      "transform": [
+        20.0,
+        0.0,
+        53100.0,
+        0.0,
+        -20.0,
+        162000.0
+      ],
+      "frame": "MOON_ME / DE421",
+      "credit": "NASA/GSFC LOLA; Barker et al. 2023, doi:10.3847/PSJ/acf3e1",
+      "retrievedUtc": "2026-09-24T06:44:58.900806+00:00",
+      "sha256": "9da395d075c68695df1c0c4617914a7809475343ae5a6ddeab424a3fafafcbed",
+      "bytes": 17604707
+    },
+    {
+      "path": "data/raw/regions/im2-slope.tif",
+      "region": "im2",
+      "kind": "slope",
+      "url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDSM_80S_20MPP_ADJ.TIF",
+      "unit": "degrees",
+      "pixelM": 20.0,
+      "sourceWindow": [
+        17855,
+        7100,
+        2400,
+        2400
+      ],
+      "transform": [
+        20.0,
+        0.0,
+        53100.0,
+        0.0,
+        -20.0,
+        162000.0
+      ],
+      "frame": "MOON_ME / DE421",
+      "credit": "NASA/GSFC LOLA; Barker et al. 2023, doi:10.3847/PSJ/acf3e1",
+      "retrievedUtc": "2026-09-24T06:45:27.892546+00:00",
+      "sha256": "90593e007b289772139ac821f88348113135059944bd53ead9f6a2916ebf577d",
+      "bytes": 20243009
+    },
+    {
+      "path": "data/raw/regions/im2-elevationError.tif",
+      "region": "im2",
+      "kind": "elevationError",
+      "url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ_ERR.TIF",
+      "unit": "m",
+      "pixelM": 20.0,
+      "sourceWindow": [
+        17855,
+        7100,
+        2400,
+        2400
+      ],
+      "transform": [
+        20.0,
+        0.0,
+        53100.0,
+        0.0,
+        -20.0,
+        162000.0
+      ],
+      "frame": "MOON_ME / DE421",
+      "credit": "NASA/GSFC LOLA; Barker et al. 2023, doi:10.3847/PSJ/acf3e1",
+      "retrievedUtc": "2026-09-24T06:46:02.656899+00:00",
+      "sha256": "12698d232dc57792c194679546c870b03590026f226bd6c6efd4606e12368b53",
+      "bytes": 19945755
+    },
+    {
+      "path": "data/raw/regions/im2-effectiveResolution.tif",
+      "region": "im2",
+      "kind": "effectiveResolution",
+      "url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDEM_80S_20MPP_ADJ_EFFRES.TIF",
+      "unit": "m",
+      "pixelM": 20.0,
+      "sourceWindow": [
+        17855,
+        7100,
+        2400,
+        2400
+      ],
+      "transform": [
+        20.0,
+        0.0,
+        53100.0,
+        0.0,
+        -20.0,
+        162000.0
+      ],
+      "frame": "MOON_ME / DE421",
+      "credit": "NASA/GSFC LOLA; Barker et al. 2023, doi:10.3847/PSJ/acf3e1",
+      "retrievedUtc": "2026-09-24T06:46:31.189866+00:00",
+      "sha256": "24fd93cdb889853b4b103ba8d9e8719168e099cf7285257d1f5aae54c94e50e9",
+      "bytes": 20185349
+    },
+    {
+      "path": "data/raw/regions/im2-roughness100m.tif",
+      "region": "im2",
+      "kind": "roughness100m",
+      "url": "https://pgda.gsfc.nasa.gov/data/LOLA_20mpp/LDRM_80S_50MPP_ADJ_ROUGH_100M.TIF",
+      "unit": "m; 100 m baseline",
+      "pixelM": 50.0,
+      "sourceWindow": [
+        7142,
+        2840,
+        960,
+        960
+      ],
+      "transform": [
+        50.0,
+        0.0,
+        53100.0,
+        0.0,
+        -50.0,
+        162000.0
+      ],
+      "frame": "MOON_ME / DE421",
+      "credit": "NASA/GSFC LOLA; Barker et al. 2023, doi:10.3847/PSJ/acf3e1",
+      "retrievedUtc": "2026-09-24T06:46:38.617919+00:00",
+      "sha256": "6dc1734bd1dbe711ea7fdf007adade99ed603f9ef7c0915092623297fe01c60d",
+      "bytes": 3268325
+    }
+  ]
+}

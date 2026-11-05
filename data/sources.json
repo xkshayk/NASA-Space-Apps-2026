@@ -1,0 +1,38 @@
+{
+  "status": "downloaded-and-validated",
+  "reviewedOn": "2026-09-17",
+  "manifest": "downloads.json",
+  "catalog": "catalog.json",
+  "referenceCases": "reference-horizons.json",
+  "documentation": "../docs/DATA-AND-API.md",
+  "sources": [
+    {
+      "id": "naif",
+      "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/"
+    },
+    {
+      "id": "webgeocalc",
+      "url": "https://naif.jpl.nasa.gov/naif/webgeocalc.html"
+    },
+    {
+      "id": "horizons",
+      "url": "https://ssd-api.jpl.nasa.gov/doc/horizons.html"
+    },
+    {
+      "id": "terrain",
+      "url": "https://pgda.gsfc.nasa.gov/products/90"
+    },
+    {
+      "id": "illumination",
+      "url": "https://pgda.gsfc.nasa.gov/products/69"
+    },
+    {
+      "id": "moon",
+      "url": "https://svs.gsfc.nasa.gov/4720/"
+    },
+    {
+      "id": "earth",
+      "url": "https://svs.gsfc.nasa.gov/2915"
+    }
+  ]
+}
