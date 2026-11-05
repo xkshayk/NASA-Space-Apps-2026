@@ -1,12 +1,223 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Explore the Moon with NASA SPICE, confirmed landing sites and LOLA terrain."><title>Lunar Horizon · NASA data explorer</title><link rel="stylesheet" href="./styles.css"><script type="module" src="./app.js"></script></head>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Compare sunlight and Earth contact at CLPS and Apollo landing sites with NASA/JPL SPICE geometry and LOLA terrain.">
+  <meta name="theme-color" content="#04080d">
+  <title>Lunar Horizon · CLPS landing-site explorer</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='%2310202b' stroke='%2386e6d8' stroke-width='2'/%3E%3Cpath d='M16 3a13 13 0 0 1 0 26a9 13 0 0 0 0-26z' fill='%23f1c27d'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
 <body>
-<a class="skip" href="#date">Skip to date controls</a><div id="universe" aria-label="Interactive 3D scene. Drag to orbit; scroll to zoom. Site and station controls also appear in the panels."></div><div id="labels" aria-hidden="true"></div>
-<header class="topbar"><a class="brand" href="./"><span class="brand-icon">◒</span><span>LUNAR <b>HORIZON</b><small></small></span></a><nav class="focus-nav" aria-label="3D view"><button data-focus="moon" class="active">Moon</button><button data-focus="earth">Earth</button><button data-focus="system">Earth + Moon</button><button data-focus="solar">Sun system</button></nav><button id="about" class="source-badge">● NASA / JPL DATA ↗</button></header>
-<aside class="panel left-panel"><div class="panel-tabs" role="tablist" aria-label="Explore mode"><button id="sites-tab" role="tab" aria-selected="true" aria-controls="sites-panel">Landing sites</button><button id="explore-tab" role="tab" aria-selected="false" aria-controls="explore-panel">Discover</button></div>
-<section id="sites-panel" role="tabpanel" aria-labelledby="sites-tab"><p class="eyebrow">THE MOON, GROUND TRUTHED</p><h1>Where could we<br>make a home?</h1><p class="subtext">Compare sunlight and a line home from places we have reached.</p><div id="site-list" class="site-list"></div><p class="footnote">Confirmed touchdown locations. Past landings do not certify future landing safety.</p><div class="divider"></div>
-<details id="assumptions"><summary>Make it your mission +</summary><div class="field"><label for="horizon">Horizon model</label><select id="horizon"><option value="terrain">LOLA terrain approximation</option><option value="sphere">Flat local horizon baseline</option></select></div><div class="field"><label for="panel">Solar panel orientation</label><select id="panel"><option value="horizontal">Horizontal, level panel</option><option value="tracking">Ideal Sun-tracking panel</option></select></div><div class="field-row"><div><label for="area">Area · m²</label><input id="area" type="number" min="0.1" max="100" step="0.1" value="1"></div><div><label for="efficiency">Efficiency · %</label><input id="efficiency" type="number" min="1" max="60" value="25"></div></div><div class="field"><label for="margin">Lunar radio clearance · °</label><input id="margin" type="number" min="0" max="30" value="5"></div><p class="footnote">Ground station elevation mask: 10°. No link budget, storage or thermal losses modeled.</p></details></section>
-<section id="explore-panel" role="tabpanel" aria-labelledby="explore-tab" hidden><p class="eyebrow">ASK A BETTER WHERE</p><h1>Explore a<br>new possibility.</h1><p class="subtext">Click the Moon, or enter a location. Screen terrain first, then sunlight and radio geometry.</p><div class="field-row"><div><label for="latitude">Latitude · °N</label><input id="latitude" type="number" min="-89.5" max="89.5" step="0.0001" value="-85"></div><div><label for="longitude">Longitude · °E</label><input id="longitude" type="number" min="-180" max="180" step="0.0001" value="20"></div></div><div class="field"><label for="max-slope">1 / Maximum regional slope · °</label><input id="max-slope" type="number" min="0.1" max="30" step="0.1" value="10"></div><p class="footnote">10° is an editable study assumption, not a NASA limit. NASA evaluates slope, rocks, craters, approach and vehicle constraints. Early Apollo used &lt;2° general slope.</p><div class="field"><label for="min-sun">2 / Minimum Sun clearance · °</label><input id="min-sun" type="number" min="0" max="50" step="0.5" value="0"></div><label class="checkline"><input id="require-radio" type="checkbox" checked> Require a visible DSN station</label><div class="field"><label for="spacing">Grid spacing · degrees</label><select id="spacing"><option value="0.25">0.25° · local area</option><option value="0.5" selected>0.5° · regional area</option><option value="1">1° · wider area</option></select></div><button id="scan" class="primary wide">Screen 25 locations ↗</button><p id="scan-status" class="footnote" role="status">No search yet. A shortlist is not a landing approval.</p><div id="candidate-list"></div></section></aside>
-<aside class="panel right-panel"><div class="panel-heading"><span id="detail-heading">YOUR COMPARISON</span><button id="export" aria-label="Export current scientific state as JSON">↓</button></div><div id="details"><p class="subtext">Loading real geometry…</p></div><details class="learn"><summary>What do these numbers mean?</summary><p><b>Sun clearance</b> measures height above modeled terrain, not just a flat horizon.</p><p><b>Panel output</b> estimates electricity from sunlight and your panel settings.</p><p><b>A line home</b> requires the lunar site and an Earth antenna to see each other. It does not reserve a radio channel.</p><p>At the poles, low sunlight and nearby ridges make small changes in location matter.</p></details></aside>
-<div class="scene-tools"><button id="reset-view">⌖ Recenter</button><label><input id="show-labels" type="checkbox" checked> Labels</label><label><input id="true-scale" type="checkbox" checked> True scale</label><span id="scale-note">Physical radii & distances · markers enlarged</span></div>
-<footer class="timeline panel"><div class="time-top"><div class="date-controls"><div><label for="date">DATE · UTC</label><input id="date" type="date" min="2024-01-01" max="2026-11-30" value="2026-10-03"></div><div><label for="clock-input">TIME · UTC</label><input id="clock-input" type="time" step="60" value="12:00"></div></div><div class="play-controls"><button id="back" aria-label="Step backward">⏮</button><button id="play" class="primary">▶ Play</button><button id="forward" aria-label="Step forward">⏭</button><label class="sr-only" for="increment">Time increment</label><select id="increment"><option value="60">1 minute / step</option><option value="600">10 minutes / step</option><option value="3600" selected>1 hour / step</option><option value="21600">6 hours / step</option><option value="86400">1 day / step</option></select></div><div class="time-window"><label for="window">EXPLORATION WINDOW</label><select id="window"><option value="1">1 day</option><option value="3" selected>3 days</option><option value="7">7 days</option><option value="30">30 days</option></select></div></div><label class="sr-only" for="time-slider">Simulation date and time</label><input id="time-slider" type="range" min="0" max="259200" step="3600" value="0"><div class="time-bottom"><span id="range-start"></span><span id="status" role="status">CONNECTING TO SCIENCE SERVICE</span><span id="range-end"></span></div></footer>
-<div id="toast" role="alert" hidden></div><dialog id="sources-dialog"><div class="dialog-head"><div><p class="eyebrow">HOW WE KNOW</p><h2>Real data. Visible assumptions.</h2></div><button id="close-sources" aria-label="Close sources">✕</button></div><div id="sources-content"></div></dialog><noscript>JavaScript and WebGL are required for the 3D view. See repository documentation for the scientific method.</noscript></body></html>
+  <a class="skip-link" href="#timebar">Skip to time controls</a>
+
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="Lunar Horizon home">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13"/><path d="M16 3a13 13 0 0 1 0 26a9 13 0 0 0 0-26z"/></svg>
+      <span class="brand-text"><span class="brand-name">Lunar <b>Horizon</b></span><span class="brand-sub">CLPS landing-site explorer</span></span>
+    </a>
+    <nav class="view-switch" aria-label="3D view">
+      <button type="button" data-view="moon" aria-pressed="true" title="Moon close-up (1)">Moon</button>
+      <button type="button" data-view="earth" aria-pressed="false" title="Earth and the Deep Space Network (2)">Earth</button>
+      <button type="button" data-view="system" aria-pressed="false" title="Earth–Moon system (3)">Earth + Moon</button>
+      <button type="button" data-view="solar" aria-pressed="false" title="Sun, Earth and Moon (4)">Sun</button>
+    </nav>
+    <div class="top-actions">
+      <button id="tour-button" type="button" class="ghost">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.5"/><path d="M6.5 5.5l4 2.5-4 2.5z"/></svg>Guided tour
+      </button>
+      <button id="sources-button" type="button" class="ghost">Sources &amp; method</button>
+    </div>
+  </header>
+
+  <div id="stage" class="stage" aria-label="Interactive 3D view. Drag to orbit, scroll or pinch to zoom, click a marker to select it. Every site and antenna is also listed in the panels.">
+    <div id="loading" class="loading" role="status"><span class="spinner" aria-hidden="true"></span><span id="loading-text">Loading NASA terrain and textures…</span></div>
+    <div class="scene-tools" role="toolbar" aria-label="Scene options">
+      <button id="recenter" type="button" title="Recenter the view (R)">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="M8 0v4M8 12v4M0 8h4M12 8h4"/></svg>Recenter
+      </button>
+      <label class="toggle"><input id="show-labels" type="checkbox" checked> Labels</label>
+      <label class="toggle"><input id="true-scale" type="checkbox" checked> True scale</label>
+      <span id="scale-note" class="scale-note">Real sizes and distances · markers enlarged</span>
+    </div>
+  </div>
+
+  <div id="service-banner" class="service-banner" role="alert" hidden></div>
+
+  <aside class="panel side-panel left-panel" aria-label="Explore">
+    <section id="tour-card" class="tour-card" aria-label="Guided tour step" aria-live="polite" hidden></section>
+    <div class="tabs" role="tablist" aria-label="Explore mode">
+      <button type="button" role="tab" id="tab-sites" aria-controls="pane-sites" aria-selected="true">Sites</button>
+      <button type="button" role="tab" id="tab-discover" aria-controls="pane-discover" aria-selected="false" tabindex="-1">Discover</button>
+      <button type="button" role="tab" id="tab-learn" aria-controls="pane-learn" aria-selected="false" tabindex="-1">Learn</button>
+    </div>
+
+    <section id="pane-sites" class="pane" role="tabpanel" aria-labelledby="tab-sites">
+      <p class="eyebrow">Confirmed landings</p>
+      <h1>Where is the light, and the line home?</h1>
+      <p class="lede">Choose up to four sites. Each value is computed for the selected UTC time from NASA/JPL SPICE geometry and LOLA terrain.</p>
+      <div id="site-list" class="site-list"></div>
+      <p id="site-hint" class="hint">Past landings do not certify a site for future landers.</p>
+
+      <details id="mission-settings" class="settings">
+        <summary>Mission assumptions</summary>
+        <div class="field">
+          <label for="horizon">Horizon model</label>
+          <select id="horizon">
+            <option value="terrain">LOLA terrain horizon</option>
+            <option value="sphere">Flat horizon (no terrain)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="panel">Solar panel</label>
+          <select id="panel">
+            <option value="horizontal">Level, fixed panel</option>
+            <option value="tracking">Ideal Sun-tracking panel</option>
+          </select>
+        </div>
+        <div class="field-row">
+          <div class="field"><label for="area">Panel area <span class="unit">m²</span></label><input id="area" type="number" inputmode="decimal" min="0.1" max="100" step="0.1" value="1"></div>
+          <div class="field"><label for="efficiency">Efficiency <span class="unit">%</span></label><input id="efficiency" type="number" inputmode="decimal" min="1" max="60" step="1" value="25"></div>
+        </div>
+        <div class="field">
+          <label for="margin">Required Earth clearance above the lunar horizon <span class="unit">°</span></label>
+          <input id="margin" type="number" inputmode="decimal" min="0" max="30" step="0.5" value="5">
+        </div>
+        <p class="hint">Each DSN antenna also needs the Moon more than 10° above its own horizon. Power is ideal sunlight × panel settings; no batteries, dust or link budgets.</p>
+      </details>
+    </section>
+
+    <section id="pane-discover" class="pane" role="tabpanel" aria-labelledby="tab-discover" hidden>
+      <p class="eyebrow">Exploratory screening</p>
+      <h1>Test a new place to land.</h1>
+      <p class="lede">Screen a 5 × 5 grid around any point: terrain first, then sunlight and a line of sight to the Deep Space Network at the selected time. <strong>Click the Moon</strong> to choose the center.</p>
+      <div class="field-row">
+        <div class="field"><label for="latitude">Latitude <span class="unit">° N</span></label><input id="latitude" type="number" inputmode="decimal" min="-89.5" max="89.5" step="0.01" value="-84.79"></div>
+        <div class="field"><label for="longitude">Longitude <span class="unit">° E</span></label><input id="longitude" type="number" inputmode="decimal" min="-180" max="180" step="0.01" value="29.2"></div>
+      </div>
+      <div class="field">
+        <label for="spacing">Grid spacing</label>
+        <select id="spacing">
+          <option value="0.1">0.1° · about 3 km between points</option>
+          <option value="0.25">0.25° · about 7.6 km</option>
+          <option value="0.5" selected>0.5° · about 15 km</option>
+          <option value="1">1° · about 30 km</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="landing-profile">Landing criteria</label>
+        <select id="landing-profile"></select>
+        <p id="profile-note" class="hint"></p>
+      </div>
+      <div class="field-row">
+        <div class="field"><label for="max-slope">Max regional slope <span class="unit">°</span></label><input id="max-slope" type="number" inputmode="decimal" min="0.1" max="30" step="0.5" value="10"></div>
+        <div class="field"><label for="min-sun">Min Sun clearance <span class="unit">°</span></label><input id="min-sun" type="number" inputmode="decimal" min="0" max="50" step="0.5" value="0"></div>
+      </div>
+      <label class="checkline"><input id="require-radio" type="checkbox" checked> Require at least one DSN antenna in view</label>
+      <details class="settings">
+        <summary>Footprint, roughness &amp; lander</summary>
+        <div class="field"><label for="roughness">Max 100 m roughness <span class="unit">m</span></label><input id="roughness" type="number" inputmode="decimal" min="0.01" max="20" step="0.1" value="1"></div>
+        <div class="field-row">
+          <div class="field"><label for="ellipse-major">Ellipse length <span class="unit">m</span></label><input id="ellipse-major" type="number" inputmode="numeric" min="100" max="10000" step="100" value="1000"></div>
+          <div class="field"><label for="ellipse-minor">Ellipse width <span class="unit">m</span></label><input id="ellipse-minor" type="number" inputmode="numeric" min="100" max="10000" step="100" value="500"></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label for="ellipse-heading">Heading <span class="unit">° from N</span></label><input id="ellipse-heading" type="number" inputmode="numeric" min="0" max="360" step="1" value="0"></div>
+          <div class="field"><label for="lander-diameter">Lander width <span class="unit">m</span></label><input id="lander-diameter" type="number" inputmode="numeric" min="1" max="100" step="1" value="5"></div>
+        </div>
+        <p class="hint">49 samples screen the landing ellipse with NASA's 20 m slope and 50 m roughness tiles, which exist near IM-1 and IM-2. Pixels cannot reveal boulders or small craters, so those always stay unknown.</p>
+      </details>
+      <button id="scan" type="button" class="primary block">Screen 25 locations</button>
+      <p id="scan-status" class="scan-status" role="status">No screen yet. A shortlist is never a landing approval.</p>
+      <div id="candidate-results"></div>
+    </section>
+
+    <section id="pane-learn" class="pane" role="tabpanel" aria-labelledby="tab-learn" hidden>
+      <div id="lessons"></div>
+    </section>
+  </aside>
+
+  <aside class="panel side-panel right-panel" aria-labelledby="details-title">
+    <div class="panel-head">
+      <button id="back-to-comparison" type="button" class="link-button" hidden>← Back to comparison</button>
+      <h2 id="details-title" class="eyebrow">Your comparison</h2>
+      <button id="export" type="button" class="ghost small" title="Download the current state, window summary and data sources as JSON">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v8M4.5 6.5 8 10l3.5-3.5M3 13h10"/></svg>JSON
+      </button>
+    </div>
+    <div id="details" class="details"><p class="lede">Loading real geometry…</p></div>
+  </aside>
+
+  <footer id="timebar" class="panel timebar" tabindex="-1">
+    <div class="time-row">
+      <div class="time-fields">
+        <div class="field compact"><label for="date">Date · UTC</label><input id="date" type="date"></div>
+        <div class="field compact"><label for="clock">Time · UTC</label><input id="clock" class="clock" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" maxlength="8" placeholder="HH:MM" title="24-hour UTC time, for example 17:30"></div>
+        <button id="now" type="button" class="chip" title="Jump to the current time">Now</button>
+      </div>
+      <div class="transport" role="group" aria-label="Playback">
+        <button id="back" type="button" class="icon-button" aria-label="Step back" title="Step back (←)">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M12 3.5 6 8l6 4.5zM4 3.5v9"/></svg>
+        </button>
+        <button id="play" type="button" class="primary play" aria-pressed="false" title="Play or pause (Space)">
+          <svg class="icon-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3.5v9l7.5-4.5z"/></svg>
+          <svg class="icon-pause" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3.5v9M11 3.5v9"/></svg>
+          <span>Play</span>
+        </button>
+        <button id="forward" type="button" class="icon-button" aria-label="Step forward" title="Step forward (→)">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 3.5 10 8l-6 4.5zM12 3.5v9"/></svg>
+        </button>
+        <div class="field compact">
+          <label for="increment">Step</label>
+          <select id="increment">
+            <option value="60">1 minute</option>
+            <option value="600">10 minutes</option>
+            <option value="3600" selected>1 hour</option>
+            <option value="21600">6 hours</option>
+            <option value="86400">1 day</option>
+          </select>
+        </div>
+      </div>
+      <div class="field compact window-field">
+        <label for="window">Window</label>
+        <select id="window">
+          <option value="1">1 day</option>
+          <option value="3" selected>3 days</option>
+          <option value="7">7 days</option>
+          <option value="14">14 days</option>
+          <option value="30">30 days</option>
+        </select>
+      </div>
+    </div>
+    <div class="track">
+      <span class="lane-name" aria-hidden="true">Time</span>
+      <input id="time-slider" type="range" min="0" max="259200" step="3600" value="0" aria-label="Time within the exploration window">
+      <div id="lanes" class="lanes"></div>
+    </div>
+    <div class="time-foot">
+      <span id="range-start"></span>
+      <span id="status" class="status" role="status" aria-live="polite">Connecting to the science service…</span>
+      <span id="range-end"></span>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast" role="alert" hidden></div>
+
+  <dialog id="sources-dialog" aria-labelledby="sources-title">
+    <div class="dialog-head">
+      <div>
+        <p class="eyebrow">How we know</p>
+        <h2 id="sources-title">Real data, visible assumptions</h2>
+      </div>
+      <button id="close-sources" type="button" class="icon-button" aria-label="Close">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9"/></svg>
+      </button>
+    </div>
+    <div id="sources-content" class="sources-content"></div>
+  </dialog>
+
+  <noscript><p class="noscript">JavaScript and WebGL are required for the 3D view. The scientific method is documented in the repository.</p></noscript>
+</body>
+</html>

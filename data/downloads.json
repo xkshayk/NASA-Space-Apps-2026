@@ -42,12 +42,12 @@
       "retrievedUtc": "2026-09-17T20:36:56.221087+00:00"
     },
     {
-      "path": "data/kernels/earth_000101_261213_260916.bpc",
-      "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/earth_000101_261213_260916.bpc",
-      "credit": "Earth ITRF93 orientation; predictions after 2026-09-16",
-      "bytes": 5133312,
-      "sha256": "e8a95af748de20f0b9c9b04da39b92a44f4f6606712b836837c6b6c12c615b82",
-      "retrievedUtc": "2026-09-17T20:36:57.408209+00:00"
+      "path": "data/kernels/earth_000101_270131_261104.bpc",
+      "url": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/pck/earth_000101_270131_261104.bpc",
+      "credit": "Earth ITRF93 orientation; predictions after 2026-11-04",
+      "bytes": 5158912,
+      "sha256": "ba7a90251af73c95bdb368e80f62b91637b27395fdbc70c2e500f86859999722",
+      "retrievedUtc": "2026-11-05T06:33:59.523149+00:00"
     },
     {
       "path": "data/kernels/earthstns_itrf93_260814.bsp",

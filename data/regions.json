@@ -1,6 +1,7 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "source": "https://pgda.gsfc.nasa.gov/products/90",
+  "integrity": "valuesSha256 hashes decoded samples, shape and dtype; independent of GeoTIFF compression",
   "inputs": [
     {
       "path": "data/raw/regions/im1-elevation.tif",
@@ -25,9 +26,13 @@
       ],
       "frame": "MOON_ME / DE421",
       "credit": "NASA/GSFC LOLA; Barker et al. 2023, doi:10.3847/PSJ/acf3e1",
-      "retrievedUtc": "2026-09-24T06:43:21.655182+00:00",
-      "sha256": "458c1e4e29478d43e51988a9bd4c900bd349f7ddf0f783fca6d9931b34bacb05",
-      "bytes": 18750135
+      "retrievedUtc": "2026-11-05T06:34:42.355570+00:00",
+      "valuesSha256": "55daee9734f8c7d769f7a501ba69e9f003c1879a84ff1c465f95659513df1360",
+      "shape": [
+        2400,
+        2400
+      ],
+      "dtype": "float32"
     },
     {
       "path": "data/raw/regions/im1-slope.tif",
@@ -52,9 +57,13 @@
       ],
       "frame": "MOON_ME / DE421",
       "credit": "NASA/GSFC LOLA; Barker et al. 2023, doi:10.3847/PSJ/acf3e1",
-      "retrievedUtc": "2026-09-24T06:43:44.754842+00:00",
-      "sha256": "838b0becde8ded79caf2b2fb238bd0ca36e66db37e08bcd8988c634d2fd4ff19",
-      "bytes": 20259547
+      "retrievedUtc": "2026-11-05T06:34:56.622592+00:00",
+      "valuesSha256": "1cb5e28034f5f798048a5ca5fa008441e0e1fff5e84b149f6d561d8822be2a31",
+      "shape": [
+        2400,
+        2400
+      ],
+      "dtype": "float32"
     },
     {
       "path": "data/raw/regions/im1-elevationError.tif",
@@ -79,9 +88,13 @@
       ],
       "frame": "MOON_ME / DE421",
       "credit": "NASA/GSFC LOLA; Barker et al. 2023, doi:10.3847/PSJ/acf3e1",
-      "retrievedUtc": "2026-09-24T06:44:07.076257+00:00",
-      "sha256": "ac271d82a375a4eed11e990264c2f33b8cda0ed3b86051bf66c12887efa0a99f",
-      "bytes": 20429999
+      "retrievedUtc": "2026-11-05T06:35:08.276743+00:00",
+      "valuesSha256": "d14d45854a83b3512cd1f9873ea130f88b05af52009fd0ba3b90117e6402dd7d",
+      "shape": [
+        2400,
+        2400
+      ],
+      "dtype": "float32"
     },
     {
       "path": "data/raw/regions/im1-effectiveResolution.tif",
@@ -106,9 +119,13 @@
       ],
       "frame": "MOON_ME / DE421",
       "credit": "NASA/GSFC LOLA; Barker et al. 2023, doi:10.3847/PSJ/acf3e1",
-      "retrievedUtc": "2026-09-24T06:44:29.309252+00:00",
-      "sha256": "22fc4815691c799d613e0699217fc9d85576912b9489a51ce3745e076fc12a75",
-      "bytes": 20528383
+      "retrievedUtc": "2026-11-05T06:35:21.292642+00:00",
+      "valuesSha256": "21f8b00a2425dca0edc1bcd0ad747af94e841324b1cb82ab7fe71729578e694c",
+      "shape": [
+        2400,
+        2400
+      ],
+      "dtype": "float32"
     },
     {
       "path": "data/raw/regions/im1-roughness100m.tif",
@@ -133,9 +150,13 @@
       ],
       "frame": "MOON_ME / DE421",
       "credit": "NASA/GSFC LOLA; Barker et al. 2023, doi:10.3847/PSJ/acf3e1",
-      "retrievedUtc": "2026-09-24T06:44:37.454295+00:00",
-      "sha256": "78a1389f26f312a7d61177bfe3891b09774ded48440caebe66b296e38f9dbf6d",
-      "bytes": 3273047
+      "retrievedUtc": "2026-11-05T06:35:25.026188+00:00",
+      "valuesSha256": "2ab6c18643e6d1ff78f73738f4e3be28a58be7da35b772eb85d9c45bacc47f23",
+      "shape": [
+        960,
+        960
+      ],
+      "dtype": "float32"
     },
     {
       "path": "data/raw/regions/im2-elevation.tif",
@@ -160,9 +181,13 @@
       ],
       "frame": "MOON_ME / DE421",
       "credit": "NASA/GSFC LOLA; Barker et al. 2023, doi:10.3847/PSJ/acf3e1",
-      "retrievedUtc": "2026-09-24T06:44:58.900806+00:00",
-      "sha256": "9da395d075c68695df1c0c4617914a7809475343ae5a6ddeab424a3fafafcbed",
-      "bytes": 17604707
+      "retrievedUtc": "2026-11-05T06:35:35.114931+00:00",
+      "valuesSha256": "48fbef601f7bb4b6bee6a0b36dc9bfd981c253fa8683992e2a832fec1d398a6d",
+      "shape": [
+        2400,
+        2400
+      ],
+      "dtype": "float32"
     },
     {
       "path": "data/raw/regions/im2-slope.tif",
@@ -187,9 +212,13 @@
       ],
       "frame": "MOON_ME / DE421",
       "credit": "NASA/GSFC LOLA; Barker et al. 2023, doi:10.3847/PSJ/acf3e1",
-      "retrievedUtc": "2026-09-24T06:45:27.892546+00:00",
-      "sha256": "90593e007b289772139ac821f88348113135059944bd53ead9f6a2916ebf577d",
-      "bytes": 20243009
+      "retrievedUtc": "2026-11-05T06:35:48.155203+00:00",
+      "valuesSha256": "a17f2d933867a19a52589793dd7ba24a329becb7b5456d47373119a372c53965",
+      "shape": [
+        2400,
+        2400
+      ],
+      "dtype": "float32"
     },
     {
       "path": "data/raw/regions/im2-elevationError.tif",
@@ -214,9 +243,13 @@
       ],
       "frame": "MOON_ME / DE421",
       "credit": "NASA/GSFC LOLA; Barker et al. 2023, doi:10.3847/PSJ/acf3e1",
-      "retrievedUtc": "2026-09-24T06:46:02.656899+00:00",
-      "sha256": "12698d232dc57792c194679546c870b03590026f226bd6c6efd4606e12368b53",
-      "bytes": 19945755
+      "retrievedUtc": "2026-11-05T06:36:04.972001+00:00",
+      "valuesSha256": "a0393abf39b4fb8ac486a790d8cccfb17e76f0d5ce4bf8a73af47fa5c50b277c",
+      "shape": [
+        2400,
+        2400
+      ],
+      "dtype": "float32"
     },
     {
       "path": "data/raw/regions/im2-effectiveResolution.tif",
@@ -241,9 +274,13 @@
       ],
       "frame": "MOON_ME / DE421",
       "credit": "NASA/GSFC LOLA; Barker et al. 2023, doi:10.3847/PSJ/acf3e1",
-      "retrievedUtc": "2026-09-24T06:46:31.189866+00:00",
-      "sha256": "24fd93cdb889853b4b103ba8d9e8719168e099cf7285257d1f5aae54c94e50e9",
-      "bytes": 20185349
+      "retrievedUtc": "2026-11-05T06:36:19.000347+00:00",
+      "valuesSha256": "1250086355c3024204d258275555b242f315f3e4cf7e4bf5f5920a6c58ec355c",
+      "shape": [
+        2400,
+        2400
+      ],
+      "dtype": "float32"
     },
     {
       "path": "data/raw/regions/im2-roughness100m.tif",
@@ -268,9 +305,13 @@
       ],
       "frame": "MOON_ME / DE421",
       "credit": "NASA/GSFC LOLA; Barker et al. 2023, doi:10.3847/PSJ/acf3e1",
-      "retrievedUtc": "2026-09-24T06:46:38.617919+00:00",
-      "sha256": "6dc1734bd1dbe711ea7fdf007adade99ed603f9ef7c0915092623297fe01c60d",
-      "bytes": 3268325
+      "retrievedUtc": "2026-11-05T06:36:23.666197+00:00",
+      "valuesSha256": "4b76863b743355071b868f6194a7b5bcf2f0158b10920bf5c1bb8337a76f8d24",
+      "shape": [
+        960,
+        960
+      ],
+      "dtype": "float32"
     }
   ]
 }

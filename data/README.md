@@ -1,6 +1,6 @@
 # Data provenance
-catalog.json contains four sourced actual touchdown locations and three DSN antennas. downloads.json records all11 official inputs with URL/hash/size/date/credit. reference-horizons.json stores exact queries and six numerical comparisons. sources.json indexes documentation.
+catalog.json contains six sourced touchdown locations (three CLPS, three Apollo) with mission facts, touchdown times and NASA links, plus six DSN antennas. downloads.json records all 11 official inputs with URL/hash/size/date/credit. regions.json records the ten 20 m/50 m LOLA windows around IM-1 and IM-2; each entry's valuesSha256 hashes the decoded samples, shape and dtype, so it verifies identically on every platform. reference-horizons.json stores exact queries and six numerical comparisons. landing-profiles.json holds the editable screening profiles. sources.json indexes documentation.
 
 kernels/ and raw/ are ignored reproducible inputs. web/public/assets/ contains ignored derived assets. Use scripts/setup.ps1 for installation, or see [data/API](../docs/DATA-AND-API.md).
 
-Do not change a checksum merely to silence a mismatch: inspect and review upstream changes, then validate the new dataset. Keep source/status/precision notes when expanding the catalog.
+Do not change a checksum merely to silence a mismatch: inspect and review upstream changes, then validate the new dataset. NAIF retires some kernels without archiving them; when download_data.py reports a replacement, pin it, review its coverage and rerun the science tests. Keep source/status/precision notes when expanding the catalog, and add future CLPS landings only with confirmed NASA/LROC coordinates.

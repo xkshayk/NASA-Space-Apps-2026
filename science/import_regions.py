@@ -2,18 +2,22 @@
 
 NASA/GSFC Barker et al. 2023, doi:10.3847/PSJ/acf3e1.
 Windows retain original pixels/CRS, NaNs, scaling, and explicit source provenance.
+
+Integrity is checked on the decoded pixel values, not on the re-compressed
+GeoTIFF bytes: deflate output differs between GDAL/zlib builds (Windows vs
+Linux), while identical NASA pixels always produce the same valuesSha256.
 """
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
+import hashlib
 import json
 import math
 import os
 from pathlib import Path
-import urllib.request
 
+import numpy as np
 import rasterio
 from rasterio.windows import Window
-from download_data import digest
 from range_reader import remote_opener
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -27,6 +31,18 @@ PRODUCTS = {
     "roughness100m": ("LDRM_80S_50MPP_ADJ_ROUGH_100M.TIF", "m; 100 m baseline"),
 }
 
+def values_digest(values):
+    """Platform-independent SHA-256 of raster samples, shape and dtype."""
+    array = np.ascontiguousarray(values)
+    little = array.astype(array.dtype.newbyteorder("<"), copy=False)
+    h = hashlib.sha256(f"{array.dtype.str.lstrip('<>|=')}:{array.shape}".encode())
+    h.update(little.tobytes())
+    return h.hexdigest()
+
+def file_values_digest(path):
+    with rasterio.open(path) as d:
+        return values_digest(d.read(1))
+
 def main():
     manifest_path = ROOT / "data/regions.json"
     old = json.loads(manifest_path.read_text(encoding="utf-8")) if manifest_path.exists() else {"inputs": []}
@@ -36,9 +52,10 @@ def main():
         path = ROOT / f"data/raw/regions/{region}-{kind}.tif"
         relative = path.relative_to(ROOT).as_posix()
         previous = known.get(relative)
-        if path.exists() and previous:
-            if digest(path) != previous["sha256"]:
-                raise ValueError(f"Regional checksum mismatch: {relative}")
+        expected = previous.get("valuesSha256") if previous else None
+        if path.exists() and expected:
+            if file_values_digest(path) != expected:
+                raise ValueError(f"Regional pixel checksum mismatch: {relative}; inspect before replacing")
             print("Verified region:", path.name, flush=True)
             return previous
         url = BASE + filename
@@ -62,13 +79,15 @@ def main():
                     target.scales = source.scales
                     target.offsets = source.offsets
                 entry = {"path":relative, "region":region, "kind":kind, "url":url, "unit":unit, "pixelM":abs(transform.a), "sourceWindow":[int(window.col_off),int(window.row_off),int(window.width),int(window.height)], "transform":list(transform)[:6], "frame":"MOON_ME / DE421", "credit":"NASA/GSFC LOLA; Barker et al. 2023, doi:10.3847/PSJ/acf3e1", "retrievedUtc":datetime.now(timezone.utc).isoformat()}
-        checksum = digest(temporary)
-        if previous and checksum != previous["sha256"]:
-            raise ValueError(f"Regional source/output changed: {relative}; inspect before replacing")
+        checksum = values_digest(values)
+        if file_values_digest(temporary) != checksum:
+            raise ValueError(f"Written regional window does not round-trip: {relative}")
+        if expected and checksum != expected:
+            raise ValueError(f"Regional source pixels changed: {relative}; inspect before replacing")
         os.replace(temporary, path)
-        entry.update(sha256=checksum, bytes=path.stat().st_size)
+        entry.update(valuesSha256=checksum, shape=list(values.shape), dtype=str(values.dtype))
         # A per-file checkpoint makes interrupted multi-file imports resumable.
-        print("Imported:", path.name, entry["bytes"], "bytes", flush=True)
+        print("Imported:", path.name, values.shape, flush=True)
         return entry
     jobs = [(region, product) for region in REGIONS for product in PRODUCTS.items()]
     entries = []
@@ -77,7 +96,7 @@ def main():
         for entry in pool.map(acquire, jobs):
             entries.append(entry)
             remaining = [v for k,v in known.items() if k not in {e["path"] for e in entries}]
-            manifest_path.write_text(json.dumps({"schemaVersion":1, "source":"https://pgda.gsfc.nasa.gov/products/90", "inputs":entries + remaining}, indent=2)+"\n", encoding="utf-8")
+            manifest_path.write_text(json.dumps({"schemaVersion":2, "source":"https://pgda.gsfc.nasa.gov/products/90", "integrity":"valuesSha256 hashes decoded samples, shape and dtype; independent of GeoTIFF compression", "inputs":entries + remaining}, indent=2)+"\n", encoding="utf-8")
     print("Regional inputs ready:", len(entries), flush=True)
 
 if __name__ == "__main__":

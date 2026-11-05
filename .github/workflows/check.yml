@@ -5,6 +5,7 @@ permissions:
 jobs:
   check:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -22,8 +23,10 @@ jobs:
           path: |
             data/kernels
             data/raw
-          key: nasa-inputs-${{ hashFiles('data/downloads.json') }}
+          key: nasa-inputs-${{ hashFiles('data/downloads.json', 'data/regions.json') }}
       - run: python science/download_data.py
+      # 20 m regional tiles near IM-1/IM-2; the engine and science tests require them.
+      - run: python science/import_regions.py
       - run: python science/prepare_assets.py
       - run: node scripts/check.mjs
       - run: python -m pytest science -q
