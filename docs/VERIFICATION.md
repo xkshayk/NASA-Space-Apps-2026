@@ -10,6 +10,7 @@ Environment: Linux container, Node 22.23, Python 3.12, Rasterio 1.5.1 / GDAL 3.1
 - 38 pytest tests passed: the 24 earlier tests plus kernel/coverage consistency, square candidate grids at four latitudes, timeline series reuse matching direct state, cancellation, JSON API errors, and display-asset conventions (mesh/residual split, equirectangular and polar normal orientation).
 - scripts/check.mjs passed, including the new check that every static element lookup in web/app.js exists in index.html (it fails when the missing #scene-title reference that broke the view buttons is reintroduced) and catalog touchdown/landing-date consistency. Three renderer tests passed.
 - Production build: 640 kB JavaScript (166 kB gzip); dist/ is 13 MB.
+- GitHub Actions (ubuntu-latest) passed from a clean runner in about 5.5 minutes: downloads, regional import with pixel-hash verification, asset preparation, checks, 38 tests and the build. Its first run caught a NameError introduced while refactoring prepare_assets.py, since fixed.
 
 ## Service behaviour
 - State requests took 4–75 ms. A 3-day, 2-site window took 1.5 s and a 30-day, 4-site window 8–12 s. While a 30-day window was calculating, state requests completed in 9–13 ms (previously they queued behind one global lock). An abandoned timeline request stopped at its next checkpoint, leaving the API idle.
